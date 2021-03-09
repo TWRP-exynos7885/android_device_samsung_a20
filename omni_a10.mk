@@ -17,16 +17,10 @@
 # Release name
 PRODUCT_RELEASE_NAME := a10
 
-# Inherit some common Omni stuff.
+# Inherit some common stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
-
-# Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-
-# Inherit Telephony packages
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Inherit language packages
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Charger
