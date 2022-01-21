@@ -5,8 +5,5 @@
 ```sh
 . build/envsetup.sh
 lunch omni_a10-eng
-make recoveryimage
+make recoveryimage -j$(nproc --all)
 ```
-
-Kernel source:
-https://github.com/mohammad92/android_kernel_samsung_a105f
