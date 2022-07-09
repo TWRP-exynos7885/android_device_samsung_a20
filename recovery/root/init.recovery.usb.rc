@@ -417,10 +417,7 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,conn_gadget,adb
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.config=adb && property:sys.usb.configfs=1
-        start adbd
-
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=sideload
     write /sys/class/android_usb/android0/enable 0
     write /sys/kernel/config/usb_gadget/g1/idVendor 0x04E8
     write /sys/kernel/config/usb_gadget/g1/idProduct 0x6860
@@ -430,12 +427,12 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=sideload
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/kernel/config/usb_gadget/g1/idVendor 0x04E8
-    write /sys/kernel/config/usb_gadget/g1/idProduct 0x6860
-    write /sys/class/android_usb/android0/f_ffs/aliases adb
-    write /sys/class/android_usb/android0/functions adb
-    write /sys/kernel/config/usb_gadget/g1/UDC "13600000.dwc3"
-    write /sys/class/android_usb/android0/enable 1
+# adb only USB configuration For VTS Test
+# This is the fallback configuration if the
+# USB manager fails to set a standard configuration
+on property:sys.usb.config=adb && property:sys.usb.configfs=1
+    start adbd
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb && property:sys.usb.configfs=1
+    write /sys/kernel/config/usb_gadget/g1/idProduct 0x685d
+    write /sys/kernel/config/usb_gadget/g1/idVendor 0x04e8
     setprop sys.usb.state ${sys.usb.config}
