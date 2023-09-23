@@ -126,8 +126,6 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 150
 TW_SKIP_COMPATIBILITY_CHECK := true
-TW_Y_OFFSET := 60
-TW_H_OFFSET := -60
 TW_INCLUDE_RESETPROP := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/kernel/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
@@ -139,8 +137,8 @@ TW_NO_LEGACY_PROPS := true
 TW_USE_TOOLBOX := true
 TW_INTERNAL_STORAGE_PATH := "/data/media/0"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard1"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard1"
 RECOVERY_SDCARD_ON_DATA := true
 
 # LZMA Compression
